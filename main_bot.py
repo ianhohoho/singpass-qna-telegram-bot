@@ -8,6 +8,12 @@ class SingpassBot:
         self.client = create_client(self.bot_name)  # Initialize client with the bot name
 
     async def register_handlers(self):
+
+        @self.client.on(events.NewMessage(pattern='/start'))
+        async def handle_start(event):
+            await event.reply('Hello! I am your friendly Singpass Bot. How can I help you?')
+            raise events.StopPropagation
+
         @self.client.on(events.NewMessage)
         async def handle_new_message(event):
 
