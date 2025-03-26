@@ -14,7 +14,7 @@ class SingpassBot:
             await event.reply('Hello! I am your friendly Singpass Bot. How can I help you?')
             raise events.StopPropagation
 
-        @self.client.on(events.NewMessage)
+        @self.client.on(events.NewMessage(pattern='^Your Question'))
         async def handle_new_message(event):
 
             message_text = event.message.text
